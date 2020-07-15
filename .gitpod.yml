@@ -1,0 +1,5 @@
+ports:
+  - port: 8080
+
+tasks:
+  - command: apachectl -f /workspace/gitpod-apache2/.gitpod.apache.conf
