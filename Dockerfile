@@ -15,6 +15,3 @@ RUN apt-get update \
 RUN chown -R gitpod:gitpod /var/run/apache2 /var/lock/apache2 /var/log/apache2 \
  && echo "include \${GITPOD_REPO_ROOT}/apache.conf" > /etc/apache2/apache2.conf \
  && echo ". \${GITPOD_REPO_ROOT}/apache.env.sh" > /etc/apache2/envvars
-
-#install Drupalconsole
-RUN apt update && sudo apt install yarn
