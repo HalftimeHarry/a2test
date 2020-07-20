@@ -15,3 +15,7 @@ RUN apt-get update \
 RUN chown -R gitpod:gitpod /var/run/apache2 /var/lock/apache2 /var/log/apache2 \
  && echo "include \${GITPOD_REPO_ROOT}/apache.conf" > /etc/apache2/apache2.conf \
  && echo ". \${GITPOD_REPO_ROOT}/apache.env.sh" > /etc/apache2/envvars
+
+#install Drupalconsole
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
