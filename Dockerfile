@@ -1,17 +1,5 @@
 FROM ubuntu:16.04
 
-# Install update instance
-RUN apt-get -y update \
-    && apt-get install curl -y \
-    && apt-get install apt-transport-https \
-    && apt-get install -y locales \
-    && echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
-    && locale-gen \
-    && curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
-    && curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list | tee /etc/apt/sources.list.d/msprod.list \
-    && apt-get -y update \
-    && ACCEPT_EULA=Y apt-get install -y mssql-tools unixodbc-dev
-
 # Create sqlsetup directory
 RUN mkdir -p /usr/src/sqlsetup
 WORKDIR /usr/src/sqlsetup
@@ -23,6 +11,18 @@ COPY . /usr/src/sqlsetup
 RUN chmod +x /usr/src/sqlsetup/setup-db.sh
 
 CMD /bin/bash ./setup-db.sh
+
+# Install update instance
+RUN apt-get -y update \
+    && apt-get install curl -y \
+    && apt-get install apt-transport-https \
+    && apt-get install -y locales \
+    && echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
+    && locale-gen \
+    && curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
+    && curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list | tee /etc/apt/sources.list.d/msprod.list \
+    && apt-get -y update \
+    && ACCEPT_EULA=Y apt-get install -y mssql-tools unixodbc-dev
 
 FROM php:7.1.16-apache
 
