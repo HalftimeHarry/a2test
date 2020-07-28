@@ -1,4 +1,4 @@
-FROM gitpod/workspace-mysql
+FROM php:7.1.16-apache
 
 USER root
 
