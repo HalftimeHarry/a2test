@@ -1,4 +1,4 @@
-FROM php:7.1.16-apache
+FROM ubuntu:16.04
 
 USER root
 
