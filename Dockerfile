@@ -1,4 +1,4 @@
-FROM php:7.1.16-apache
+FROM php:7.1.23-apache
 
 USER root
 
@@ -36,6 +36,7 @@ RUN ACCEPT_EULA=Y apt-get install -y msodbcsql
 RUN apt-get install -y unixodbc-dev
 
 RUN pear config-set php_ini `php --ini | grep "Loaded Configuration" | sed -e "s|.*:\s*||"` system
+RUN pecl install
 RUN pecl install sqlsrv
 RUN pecl install pdo_sqlsrv
 
