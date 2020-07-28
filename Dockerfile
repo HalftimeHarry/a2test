@@ -1,4 +1,4 @@
-FROM php:7.1.23-apache
+FROM php:7.1.16-apache
 
 USER root
 
