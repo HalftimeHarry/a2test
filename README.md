@@ -3,7 +3,7 @@ Start a Drupal 8 project
 
 # Run this after launching instance then update the conf see screenshot.png for example 
 
-composer create-project drupal-composer/drupal-project:8.x-dev mysite --no-interaction
+composer create-project drupal/recommended-project mysite
 
 # Mysql set-up
 
